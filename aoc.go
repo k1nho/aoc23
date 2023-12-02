@@ -13,6 +13,12 @@ import (
 	"os"
 )
 
+func check(err error) {
+    if err != nil {
+        panic(err.Error())
+    }
+}
+
 func main() {
 	// Read file argument
 	args := os.Args
