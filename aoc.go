@@ -9,14 +9,38 @@ import (
 var goTmpl = `package main
 
 import (
+	"fmt"
 	"io"
 	"os"
+	"strconv"
+	"strings"
 )
 
 func check(err error) {
     if err != nil {
         panic(err.Error())
     }
+}
+
+func maxInt(a, b int64) int64 {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func stoi(a string) int64 {
+	val, err := strconv.ParseInt(a, 10, 64)
+	if err != nil {
+		panic(fmt.Sprintf("could not convert %s to int", a))
+	}
+	return val
+}
+
+func sizeChecker(a []string, num int) {
+	if len(a) < num {
+		panic(fmt.Sprintf("size of arr: %d, size required: %d", len(a), num))
+	}
 }
 
 func main() {
@@ -46,7 +70,8 @@ func main() {
 }
 
 func solve(data string) {
-
+    lines := strings.Split(data, "\n")
+	lines = lines[:len(lines)-1]
 }
 `
 
